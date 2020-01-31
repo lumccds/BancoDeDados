@@ -1,16 +1,11 @@
-create database universidade; -- Creates the new database
-use universidade;
-CREATE TABLE curso(
-	codCurso integer not null auto_increment,
-    nome varchar(100) not null,
-    area varchar(50) not null,
-    modalidade char(1),
-    
-    CONSTRAINT pk_curso primary key (codCurso)
+codCursoCREATE TABLE prof_disciplina(
+
+codDisciplina INTEGER NOT NULL,
+numRegistro INTEGER NOT NULL,
+semestre INTEGER NOT NULL,
+ano INTEGER NOT NULL,
+
+CONSTRAINT pk_prof_disciplina PRIMARY KEY (codDisciplina, numRegistro, semestre, ano),
+CONSTRAINT fk_profMinistra FOREIGN KEY (numRegistro) REFERENCES professor(numRegistro),
+CONSTRAINT fk_disciplinaMinistrada FOREIGN KEY (codDisciplina) REFERENCES disciplina(codDisciplina)
 );
-
-SELECT * from curso;
-
-
--- create user 'springuser'@'%' identified by 'ThePassword'; Creates the user
--- grant all on db_example.* to 'springuser'@'%';  Gives all privileges to the new user on the newly created database      
